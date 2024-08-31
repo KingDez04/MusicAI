@@ -1,10 +1,14 @@
 require("dotenv").config();
+const express = require("express");
 const OpenAI = require("openai");
 
+const app = express();
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const aiModel = "gpt-3.5-turbo";
 
-module.exports = async (req, res) => {
+app.use(express.json());
+
+app.get("/api/music", async (req, res) => {
   const { inputs } = req.query;
 
   if (inputs) {
@@ -31,4 +35,6 @@ module.exports = async (req, res) => {
   } else {
     return res.status(400).json({ message: "No input provided" });
   }
-};
+});
+
+module.exports = app;
