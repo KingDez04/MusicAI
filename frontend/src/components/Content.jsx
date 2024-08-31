@@ -11,7 +11,7 @@ export const Content = () => {
   const fetchRecommendation = () => {
     setLoading(true);
     fetch(
-      `http://localhost:3001/api/music?inputs=${encodeURIComponent(
+      `https://musicai-server.vercel.app/api/music?inputs=${encodeURIComponent(
         JSON.stringify({ genre, mood, timeOfDay, activity })
       )}`
     )
