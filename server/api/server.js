@@ -1,10 +1,15 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const OpenAI = require("openai");
 
 const app = express();
+const PORT = process.env.PORT || 3001;
+
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const aiModel = "gpt-3.5-turbo";
+
+app.use(cors({ origin: "https://muzicai.vercel.app" }));
 
 app.use(express.json());
 
@@ -37,4 +42,6 @@ app.get("/api/music", async (req, res) => {
   }
 });
 
-module.exports = app;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
