@@ -1,6 +1,9 @@
+// Import useState hook from React
 import { useState } from "react";
 
+// Define the Content component
 export const Content = () => {
+  // State tracking
   const [recommendation, setRecommendation] = useState("");
   const [genre, setGenre] = useState("Rock");
   const [mood, setMood] = useState("Happy");
@@ -8,8 +11,11 @@ export const Content = () => {
   const [activity, setActivity] = useState("Working Out");
   const [loading, setLoading] = useState(false);
 
+  // Function to fetch the music recommendation from the API
   const fetchRecommendation = () => {
     setLoading(true);
+
+    // Fetch music recommendation from the API using the selected inputs
     fetch(
       `https://musicai-server.vercel.app/api/music?inputs=${encodeURIComponent(
         JSON.stringify({ genre, mood, timeOfDay, activity })
@@ -17,23 +23,28 @@ export const Content = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        // Check if a recommendation was received
         if (data.aiResponse) {
           setRecommendation(data.aiResponse);
         } else if (data.error) {
+          // Handle any errors returned from the API
           setRecommendation("Error fetching recommendation.");
           console.error(data.error);
         } else {
+          // Handle unexpected response formats
           setRecommendation("Unexpected response format.");
         }
         setLoading(false);
       })
       .catch((error) => {
+        // Handle any errors that occur during the fetch request
         console.error("Error fetching AI text: ", error);
         setRecommendation("Error fetching recommendation.");
         setLoading(false);
       });
   };
 
+  // Return the JSX to render the content of the component
   return (
     <div className="flex flex-col max-w-sm overflow-hidden shadow-lg bg-white p-4 border rounded-lg mx-auto mt-4">
       <div className="mb-4">
