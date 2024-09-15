@@ -5,7 +5,7 @@
 **MusicAI** is a music recommendation web application designed to provide personalized music suggestions based on a user's preferences like genre, mood, time of day, and activity. By leveraging OpenAI's GPT-3.5 API, MusicAI brings intelligent, curated music discovery to your fingertips, aiming to transform how you find and enjoy new tunes.
 
 - **Deployed Site**: [MusicAI](https://musicai-client.vercel.app/)
-- **Blog Article**: [Final Project Blog](https://medium.com/your-blog-link)
+- **Blog Article**: [Final Project Blog]([https://medium.com/your-blog-link](https://medium.com/@desmondademeso/musicai-blog-post-9df54af2c022))
 - **Author LinkedIn**: [Ademola Ademeso](https://www.linkedin.com/in/ademola-ademeso)
 
 ## Inspiration
@@ -32,7 +32,7 @@ Here are the main tools and technologies used:
 
 The core functionality of MusicAI revolves around generating music recommendations based on the user's input. The recommendation engine works by sending the user's selected genre, mood, time of day, and activity to OpenAI's GPT-3.5 model, which then returns a personalized suggestion.
 
-![Code](./server/server.js)
+[Code Snippet](./server/server.js)
 
 ## Challenges
 
